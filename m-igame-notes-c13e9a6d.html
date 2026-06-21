@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+  <title>爱游戏体育 · 再次遇见</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #faf8f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: #2d2a27;
+      line-height: 1.75;
+      padding: 2rem 1.5rem 3rem;
+      max-width: 840px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---- 顶部导航 ---- */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0 0.8rem;
+      border-bottom: 1px solid #e6ded6;
+      margin-bottom: 2.8rem;
+    }
+
+    .site-name {
+      font-size: 1.1rem;
+      font-weight: 550;
+      letter-spacing: 0.3px;
+      color: #3f3a35;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      color: #6b625c;
+      padding: 0.2rem 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #2d2a27;
+      border-bottom-color: #b8a088;
+    }
+
+    /* ---- 主体 ---- */
+    .hero {
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 440;
+      letter-spacing: 1px;
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+      color: #2c2824;
+    }
+
+    .hero .sub {
+      font-size: 1rem;
+      color: #6f6760;
+      border-left: 3px solid #cbb7a5;
+      padding-left: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    /* 正文块 */
+    .intro-text {
+      font-size: 1rem;
+      margin-bottom: 2.5rem;
+      background: #ffffffd9;
+      padding: 1.6rem 2rem 1.8rem;
+      border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+    }
+
+    .intro-text p {
+      margin-bottom: 1.2rem;
+    }
+
+    .intro-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro-text a {
+      color: #7f4e2e;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #d5c0ac;
+      font-weight: 480;
+      transition: color 0.2s;
+    }
+
+    .intro-text a:hover {
+      color: #a96037;
+      text-decoration-color: #a96037;
+    }
+
+    /* 三个场景卡片模块 */
+    .scenes-section {
+      margin: 2.8rem 0 2.5rem;
+    }
+
+    .scenes-heading {
+      font-weight: 440;
+      font-size: 1.3rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .scenes-heading span {
+      background: #e1d7cd;
+      height: 2px;
+      flex: 1;
+    }
+
+    .scene-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .scene-card {
+      background: #ffffffd2;
+      flex: 1 1 200px;
+      min-width: 160px;
+      padding: 1.5rem 1.2rem 1.4rem;
+      border-radius: 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02), 0 0 0 1px #f0e9e1;
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+
+    .scene-card:hover {
+      box-shadow: 0 4px 12px rgba(110, 80, 60, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .scene-card h3 {
+      font-size: 1.1rem;
+      font-weight: 520;
+      letter-spacing: 0.3px;
+      color: #3d3530;
+      margin-bottom: 0.6rem;
+    }
+
+    .scene-card p {
+      font-size: 0.92rem;
+      color: #534b44;
+      margin-bottom: 0.5rem;
+    }
+
+    .scene-card .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      background: #eee9e3;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      color: #584e44;
+      margin-top: 0.3rem;
+    }
+
+    /* 引用提示框 */
+    .notice-block {
+      background: #f1ece6;
+      padding: 1.5rem 2rem;
+      border-radius: 20px;
+      margin: 2.2rem 0 2.2rem;
+      border-left: 5px solid #b19b8a;
+      color: #3b3530;
+    }
+
+    .notice-block strong {
+      font-weight: 550;
+      color: #2c2621;
+    }
+
+    .notice-block a {
+      color: #7f4e2e;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+    }
+
+    .notice-block a:hover {
+      color: #a96037;
+    }
+
+    /* FAQ 简明摘要 */
+    .faq-mini {
+      margin: 2rem 0 2.5rem;
+    }
+
+    .faq-mini h2 {
+      font-size: 1.25rem;
+      font-weight: 440;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .faq-item {
+      border-bottom: 1px dashed #dbd2c9;
+      padding: 0.9rem 0;
+    }
+
+    .faq-item q {
+      font-weight: 480;
+      font-style: normal;
+      color: #3b342f;
+    }
+
+    .faq-item .answer {
+      margin-top: 0.25rem;
+      color: #5e554d;
+      font-size: 0.93rem;
+    }
+
+    /* footer */
+    .footer-note {
+      margin-top: 3rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #e3dbd2;
+      font-size: 0.85rem;
+      color: #70675f;
+      text-align: center;
+    }
+
+    /* 移动端调整 */
+    @media (max-width: 540px) {
+      body {
+        padding: 1.2rem 1rem 2rem;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .intro-text {
+        padding: 1.2rem 1.2rem 1.4rem;
+      }
+      .nav-links {
+        gap: 1rem;
+      }
+      .scene-grid {
+        gap: 1rem;
+      }
+      .scene-card {
+        padding: 1.2rem 1rem;
+      }
+      .notice-block {
+        padding: 1.2rem 1rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .top-nav {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部导航 -->
+  <nav class="top-nav">
+    <span class="site-name">igame · 爱游戏</span>
+    <div class="nav-links">
+      <a href="#">再次发现</a>
+      <a href="#">场景</a>
+      <a href="#">说明</a>
+    </div>
+  </nav>
+
+  <!-- Hero 区 -->
+  <section class="hero">
+    <h1>爱游戏体育 · 常来的理由</h1>
+    <div class="sub">收藏一个熟悉的地方，每次回来都有新的感受</div>
+  </section>
+
+  <!-- 核心介绍 —— 从再次访问与收藏切入 -->
+  <div class="intro-text">
+    <p>浏览器的书签栏里，总有几个地址是反复点开的。对于持续关注体育资讯、赛事复盘或运动社区的人来说，<a href="https://m-igame-sport.com">爱游戏体育</a>是那个值得留在收藏夹里的名字。它不追求花哨的入口，而是用相对克制的信息流，照顾回访者的阅读习惯。</p>
+    <p>将页面加入收藏只需几秒，但真正让一个站点被持续回访的，是内容本身的层次与更新节奏。无论是清晨快速浏览赛果，还是周末静下来看一篇战术拆解，爱游戏体育提供的板块划分让重复访问变得自然，而不是负担。</p>
+    <p>今天的介绍，想从“再次回来”这个动作出发，聊聊三个常见的场景，以及一些你可能关心的小细节。</p>
+  </div>
+
+  <!-- 三个场景模块 -->
+  <section class="scenes-section">
+    <div class="scenes-heading">
+      三个常来的场景
+      <span></span>
+    </div>
+    <div class="scene-grid">
+      <div class="scene-card">
+        <h3>📋 赛前·信息聚合</h3>
+        <p>比赛日之前，快速扫一眼预计阵容、伤停情况与数据前瞻。不需要频繁刷新，页面结构清晰，适合做一点自己的功课。</p>
+        <span class="tag">收藏夹常客</span>
+      </div>
+      <div class="scene-card">
+        <h3>📌 赛后·观点沉淀</h3>
+        <p>终场哨响之后，比起结果，更想看视角独特的评论或长文分析。爱游戏体育的专题页往往比即时新闻多一份从容。</p>
+        <span class="tag">深度回看</span>
+      </div>
+      <div class="scene-card">
+        <h3>🔖 日常·发现与记录</h3>
+        <p>没有比赛的日子，翻翻历史经典对局或人物特写，也适合把喜欢的文章随手收藏，形成自己的阅读索引。</p>
+        <span class="tag">常读常新</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 引用提示框（轻量常见说明） -->
+  <aside class="notice-block">
+    <strong>📎 常见说明：</strong> 如果你之前访问过 <a href="https://m-igame-sport.com">爱游戏体育</a> 并希望保持浏览连续性，建议将页面添加至浏览器书签或主屏幕（移动端）。站点界面以内容优先，适应不同屏幕尺寸，部分板块会根据赛季节奏做内容轮换，但整体导航位置保持稳定，便于回访者定位。
+  </aside>
+
+  <!-- FAQ 摘要 (常见问题简明版) -->
+  <div class="faq-mini">
+    <h2>🔍 你可能想问的</h2>
+    <div class="faq-item">
+      <q>为什么要把一个体育站点放在收藏夹？</q>
+      <div class="answer">因为体育资讯的时效性并不只靠“快”，更多时候需要稳定、可回顾的信息组织方式。一个值得收藏的页面，会让你愿意一次次点开。</div>
+    </div>
+    <div class="faq-item">
+      <q>移动端浏览体验如何？</q>
+      <div class="answer">页面针对不同宽度做了适配，文字大小和间距在手机上也保持可读性。导航简约，重点在于内容本身。</div>
+    </div>
+    <div class="faq-item">
+      <q>内容更新频率如何？</q>
+      <div class="answer">通常跟随主要赛事节奏，赛前赛后会有关注点更新。同时也保留一部分常设栏目，避免回访时觉得陌生。</div>
+    </div>
+  </div>
+
+  <!-- 底部 -->
+  <footer class="footer-note">
+    <p>保持关注 · 常回来看看</p>
+  </footer>
+
+</body>
+</html>
