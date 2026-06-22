@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PG电子 · 资料整理与索引页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f3f4f6;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 */
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 14px 28px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e5e7eb;
+            margin-bottom: 40px;
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 0.3px;
+            color: #1f2937;
+        }
+
+        .nav-brand span {
+            background: #eef2ff;
+            padding: 2px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #4338ca;
+            margin-left: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 0.95rem;
+            color: #475569;
+            transition: color 0.2s, border-bottom 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a:hover {
+            color: #1f2937;
+            border-bottom-color: #6366f1;
+        }
+
+        /* hero 区 */
+        .hero {
+            background: #ffffff;
+            border-radius: 28px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+            padding: 48px 36px;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            color: #0f172a;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #334155;
+            max-width: 800px;
+            margin-bottom: 12px;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: #eef2ff;
+            color: #312e81;
+            border-radius: 40px;
+            padding: 6px 18px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        /* 卡片通用 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.02);
+            padding: 28px 24px;
+            transition: box-shadow 0.25s, transform 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card p, .card li {
+            color: #334155;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li::before {
+            content: "·";
+            color: #6366f1;
+            font-weight: 700;
+            display: inline-block;
+            width: 1.2em;
+        }
+
+        .badge {
+            background: #f1f5f9;
+            padding: 2px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #475569;
+        }
+
+        /* 说明 / FAQ 摘要 */
+        .faq-section {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            padding: 32px 28px;
+            margin: 32px 0;
+        }
+
+        .faq-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #0f172a;
+        }
+
+        .faq-item {
+            padding: 14px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #1e293b;
+        }
+
+        .faq-item p {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        .faq-item a {
+            color: #4338ca;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font-weight: 500;
+        }
+
+        .faq-item a:hover {
+            color: #312e81;
+        }
+
+        /* 内敛链接 */
+        .inline-link {
+            color: #4338ca;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font-weight: 500;
+        }
+
+        .inline-link:hover {
+            color: #1e1b4b;
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 32px 0 20px;
+            font-size: 0.85rem;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 40px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px 20px;
+            }
+
+            .nav-links {
+                gap: 16px;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 28px 20px;
+            }
+
+            .faq-section {
+                padding: 24px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 导航 -->
+    <nav>
+        <div class="nav-brand">
+            📋 资料整理 · <span>索引</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">概览</a>
+            <a href="#">场景</a>
+            <a href="#">说明</a>
+            <a href="#">整合</a>
+        </div>
+    </nav>
+
+    <!-- Hero 介绍 -->
+    <div class="hero">
+        <h1>关于 PG 电子 · 信息整理</h1>
+        <p>
+            这里是一份围绕 <strong>pg电子</strong> 相关内容的索引与说明页。从资料查找、常见场景到使用说明，力求以平实条理的方式呈现，不做夸张渲染，只做清晰梳理。
+        </p>
+        <p>
+            如果你正在了解或使用 <a href="https://portal-webs-pgsoft.com" class="inline-link">pg电子</a> 相关功能，下面的卡片与常见说明或许能帮你快速定位需要的信息。
+        </p>
+        <span class="tagline">📎 整理时间 · 持续更新</span>
+    </div>
+
+    <!-- 三个场景模块 (卡片) -->
+    <h2 style="font-weight: 600; font-size: 1.4rem; margin-bottom: 8px; color: #0f172a;">常见使用场景</h2>
+    <p style="color: #475569; margin-bottom: 8px;">根据实际反馈整理的三个典型方向，可作为索引参考。</p>
+    <div class="card-grid">
+
+        <div class="card">
+            <h3>📍 场景一 · 资料查询</h3>
+            <ul>
+                <li>查找 <strong>pg电子</strong> 相关的功能说明与版本记录</li>
+                <li>了解界面模块的入口位置及基本逻辑</li>
+                <li>对比不同环境下的参数与配置方式</li>
+            </ul>
+            <p style="margin-top: 10px; color: #475569;">可通过 <a href="https://portal-webs-pgsoft.com" class="inline-link">pg电子</a> 信息页获取最新结构。</p>
+        </div>
+
+        <div class="card">
+            <h3>📌 场景二 · 功能索引</h3>
+            <ul>
+                <li>归纳核心功能组件与调用方式</li>
+                <li>记录常用操作路径与页面层级</li>
+                <li>整理与后台对接时需要的字段说明</li>
+            </ul>
+            <p style="margin-top: 10px;"><span class="badge">提示</span> 部分说明以原文为准，此处仅做摘要整理。</p>
+        </div>
+
+        <div class="card">
+            <h3>🧩 场景三 · 常见说明汇总</h3>
+            <ul>
+                <li>列出使用过程中频繁出现的问题与对应说明</li>
+                <li>区分不同模块的职责与数据流向</li>
+                <li>提供基础的排查思路与术语解释</li>
+            </ul>
+            <p style="margin-top: 10px; color: #475569;">下面也有 FAQ 摘要，可配合浏览。</p>
+        </div>
+    </div>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <div class="faq-section">
+        <h2>📖 常见说明摘要</h2>
+
+        <div class="faq-item">
+            <strong>Q：哪里可以找到 <strong>pg电子</strong> 最直接的信息页面？</strong>
+            <p>建议直接参考 <a href="https://portal-webs-pgsoft.com">pg电子</a> 本身的内容结构，该页面聚合了较多基础说明与入口，适合作为起点。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>Q：页面上提到的“场景模块”具体指什么？</strong>
+            <p>指从实际使用中归纳出的三类典型需求：资料查询、功能索引、常见说明汇总。每个卡片都附有链接指向核心站。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>Q：这些整理内容会保持更新吗？</strong>
+            <p>会基于 <a href="https://portal-webs-pgsoft.com">pg电子</a> 的页面变动做不定期修订，但无法保证实时同步，建议以原始页面为准。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>Q：是否有更详细的使用文档？</strong>
+            <p>当前索引页仅做轻量导航与场景展示，详细文档请直接访问 <a href="https://portal-webs-pgsoft.com">pg电子</a> 及相关帮助部分。</p>
+        </div>
+    </div>
+
+    <!-- 一段补充说明: 保持克制 -->
+    <div style="background: #ffffff; border-radius: 20px; border: 1px solid #e2e8f0; padding: 24px 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); margin: 24px 0;">
+        <p style="color: #334155; font-size: 0.96rem;">
+            ⚡ 本页面仅作为资料整理与索引用途，不包含任何诱导性或承诺性表述。所有功能与信息请以 
+            <a href="https://portal-webs-pgsoft.com" class="inline-link">pg电子</a> 
+            官方页面为准。整理目的仅为方便回顾与快速定位，请合理使用。
+        </p>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>整理索引 · 内容保持克制 ｜ 以 <a href="https://portal-webs-pgsoft.com" style="color: #4338ca; text-decoration: underline;">pg电子</a> 原始信息为准</p>
+        <p style="margin-top: 8px; color: #94a3b8;">&copy; 资料整理页 · 仅供个人参考</p>
+    </footer>
+
+</div>
+</body>
+</html>
